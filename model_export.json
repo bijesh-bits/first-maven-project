@@ -1,0 +1,167 @@
+{
+  "summary": {
+    "title": "E-Commerce Threat Model",
+    "owner": "Student",
+    "description": "3-tier e-commerce system threat model using STRIDE"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "title": "DFD Level 1",
+        "thumbnail": "",
+        "diagramJson": {
+          "cells": [
+            {
+              "type": "actor",
+              "name": "User",
+              "id": "E1"
+            },
+            {
+              "type": "process",
+              "name": "Authentication",
+              "id": "P1"
+            },
+            {
+              "type": "process",
+              "name": "Product Catalog",
+              "id": "P2"
+            },
+            {
+              "type": "process",
+              "name": "Order Management",
+              "id": "P3"
+            },
+            {
+              "type": "process",
+              "name": "Payment Processing",
+              "id": "P4"
+            },
+            {
+              "type": "store",
+              "name": "User DB",
+              "id": "D1"
+            },
+            {
+              "type": "store",
+              "name": "Product DB",
+              "id": "D2"
+            },
+            {
+              "type": "store",
+              "name": "Orders DB",
+              "id": "D3"
+            },
+            {
+              "type": "actor",
+              "name": "Payment Gateway",
+              "id": "E2"
+            }
+          ],
+          "data_flows": [
+            {
+              "name": "Login Request",
+              "source": "E1",
+              "target": "P1"
+            },
+            {
+              "name": "Auth Query",
+              "source": "P1",
+              "target": "D1"
+            },
+            {
+              "name": "Fetch Products",
+              "source": "E1",
+              "target": "P2"
+            },
+            {
+              "name": "Product Query",
+              "source": "P2",
+              "target": "D2"
+            },
+            {
+              "name": "Order Request",
+              "source": "E1",
+              "target": "P3"
+            },
+            {
+              "name": "Store Order",
+              "source": "P3",
+              "target": "D3"
+            },
+            {
+              "name": "Payment Trigger",
+              "source": "P3",
+              "target": "P4"
+            },
+            {
+              "name": "Payment Request",
+              "source": "P4",
+              "target": "E2"
+            }
+          ],
+          "trust_boundaries": [
+            {
+              "name": "Internet Boundary",
+              "description": "User to Backend"
+            },
+            {
+              "name": "Database Boundary",
+              "description": "Backend to Database"
+            }
+          ],
+          "threats": [
+            {
+              "id": "T1",
+              "stride": "Spoofing",
+              "target": "P1",
+              "description": "Attacker uses stolen credentials"
+            },
+            {
+              "id": "T2",
+              "stride": "Tampering",
+              "target": "P1",
+              "description": "Modify login request payload"
+            },
+            {
+              "id": "T3",
+              "stride": "Information Disclosure",
+              "target": "D1",
+              "description": "User data leakage from DB"
+            },
+            {
+              "id": "T4",
+              "stride": "Denial of Service",
+              "target": "P4",
+              "description": "Flood payment API"
+            },
+            {
+              "id": "T5",
+              "stride": "Repudiation",
+              "target": "P3",
+              "description": "User denies order"
+            },
+            {
+              "id": "T6",
+              "stride": "Elevation of Privilege",
+              "target": "P3",
+              "description": "Gain admin privileges"
+            },
+            {
+              "id": "T7",
+              "stride": "Tampering",
+              "target": "D3",
+              "description": "Modify order records"
+            },
+            {
+              "id": "T8",
+              "stride": "Information Disclosure",
+              "target": "P2",
+              "description": "Sensitive product data exposure"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
