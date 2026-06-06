@@ -1,0 +1,26 @@
+{
+  "version": "2.6.2",
+  "summary": {
+    "title": "SSE Assignment 1 - E-Commerce STRIDE Model",
+    "owner": "Bijesh Nair",
+    "description": "Threat model for a deliberately vulnerable three-tier e-commerce web application.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Threat-Diagram",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": []
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "Sashank Dara",
+    "threatTop": 0
+  }
+}
